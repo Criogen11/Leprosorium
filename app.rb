@@ -7,6 +7,11 @@ get '/' do
 end
 
 get '/new' do
-  erb "Hello World"
+  erb :new
+end
+
+post '/new' do
+  content = params['content']
+  erb "Вы ввели #{content}"
 end
 
