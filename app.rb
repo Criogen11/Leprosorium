@@ -13,7 +13,19 @@ end
 
 #   Данная фенкция позволяет видеть все что в ней находится при каждом обращении GET или POST
 before do
+	init_db
+end
 
+#   Все что находится сдесь инициализируется при каждом запуске или сохранении файла
+configure do
+	init_db
+	#   IF NOT EXISTS пишется для того чтобы при инициализации если такая БД уже есть не создавать ее повторно
+	@db.execute 'CREATE TABLE IF NOT EXISTS Posts  
+	           (
+	              id" INTEGER PRIMARY KEY AUTOINCREMENT, 
+	              "created_date DATE, 
+	              "content" TEXT
+	            )'
 end
 
 get '/' do
