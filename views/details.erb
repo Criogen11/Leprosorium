@@ -7,4 +7,13 @@
 			Добавлен <%= @row['created_date'] %>
 			<br />
 			<br />
-	</p>	
+	</p>
+<br />	
+<h3>Комментарии</h3>
+<p>
+	<form action="/details/<%= @row['id'] %>" method="POST" role="form">
+		<textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="content"></textarea>
+		</br>
+		<button type="submit" class="btn btn-primary">Добавить комментарий</button>
+	</form>
+</p>
