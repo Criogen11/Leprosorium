@@ -10,6 +10,19 @@
 	</p>
 <br />	
 <h3>Комментарии</h3>
+<br />
+<% @comments.each do |comment| %>
+
+	<p>
+			<%= comment['content'] %>
+			<br/>
+			<br />
+			<span style="font-size: 12px; color: gray">Добавлен <%= comment['created_date'] %></span>
+			<hr />
+	</p>	
+
+<% end %>
+
 <p>
 	<form action="/details/<%= @row['id'] %>" method="POST" role="form">
 		<textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="content"></textarea>
