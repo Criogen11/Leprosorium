@@ -23,11 +23,19 @@ configure do
 	init_db
 	#   Создает таблицу
 	#   IF NOT EXISTS пишется для того чтобы при инициализации если такая БД уже есть не создавать ее повторно
-	@db.execute 'CREATE TABLE IF NOT EXISTS Posts  
+	@db.execute 'CREATE TABLE if not exists Posts  
 	           (
-	              id" INTEGER PRIMARY KEY AUTOINCREMENT, 
+	              id INTEGER PRIMARY KEY AUTOINCREMENT, 
 	              created_date DATE, 
-	              content" TEXT
+	              content TEXT
+	            )'
+
+	@db.execute 'CREATE TABLE if not exists Comments  
+	           (
+	              id INTEGER PRIMARY KEY AUTOINCREMENT, 
+	              created_date DATE, 
+	              content TEXT,
+	              post_id integer
 	            )'
 end
 
