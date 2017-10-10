@@ -89,6 +89,11 @@ post '/details/:post_id' do
 
 	content = params[:content]
 
-	erb "Вы ввели комментарий #{content} с идентификатором #{post_id}"
+	@db.execute 'INSERT INTO Comments (created_date, content, post_id) VALUES (datetime(), ?, ?)', [content, post_id]
+
+
+	
+	#  перенаправление на страницу поста
+	redirect to ('/details/' + post_id)
 
 end
