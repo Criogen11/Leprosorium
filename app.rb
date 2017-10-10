@@ -74,3 +74,13 @@ get '/details/:post_id' do
 
 end	
 
+#  обрваботчик POST запроса (принимаем данные от браузера)
+post '/details/:post_id' do
+
+	post_id = params[:post_id]
+
+	content = params[:content]
+
+	erb "Вы ввели комментарий #{content} с идентификатором #{post_id}"
+
+end
