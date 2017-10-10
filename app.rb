@@ -26,13 +26,17 @@ configure do
 	@db.execute 'CREATE TABLE IF NOT EXISTS Posts  
 	           (
 	              id" INTEGER PRIMARY KEY AUTOINCREMENT, 
-	              "created_date DATE, 
-	              "content" TEXT
+	              created_date DATE, 
+	              content" TEXT
 	            )'
 end
 
 get '/' do
-	erb 'Can you handle a <a href="/secure/place">secret</a>?'
+
+	#  Выбираем список постов из БД
+	@results = @db.execute 'SELECT * FROM Posts order by id desc'
+
+	erb :index
 end
 
 get '/new' do
@@ -46,7 +50,9 @@ post '/new' do
 	if content.length <= 0 
 		@error = 'Введите сообщение!'
 		return erb :new
-	end	
+	end
+
+	@db.execute 'INSERT INTO Posts (content, created_date) VALUES (?, datetime())', [content]
 
 	erb "Вы ввели #{content}"
 
