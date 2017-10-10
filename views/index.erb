@@ -3,9 +3,14 @@
 <% @results.each do |post|  %>
 
 	<p>
+			<br />
 			<%= post['content'] %>
 			<br />
+			<br />
 			Добавлен <%= post['created_date'] %>
+			<br />
+			<br />
+			<a href="/post/<%= post['id'] %>">Комментарии</a>
 	</p>	
 	<hr />
 <% end  %>
