@@ -1,6 +1,8 @@
 <h3>Информация о посте</h3>
 	<p>
 			<br />
+			<%= @row['name_user'] %>
+			<br />
 			<%= @row['content'] %>
 			<br />
 			<br />
@@ -14,6 +16,8 @@
 <% @comments.each do |comment| %>
 
 	<p>
+			<%= comment['name_user'] %>
+			<br />
 			<%= comment['content'] %>
 			<br/>
 			<br />
@@ -25,7 +29,9 @@
 
 <p>
 	<form action="/details/<%= @row['id'] %>" method="POST" role="form">
-		<textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="content"></textarea>
+		<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Напишите ваше имя" style="width: 300px" name="name_user">
+		<br />
+		<textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="content" placeholder="Напишите сообщение"></textarea>
 		</br>
 		<button type="submit" class="btn btn-primary">Добавить комментарий</button>
 	</form>
